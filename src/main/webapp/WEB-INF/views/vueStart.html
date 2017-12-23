@@ -1,0 +1,119 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello VUE!</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="bindId">
+    <span v-bind:title="message">
+    鼠标悬停显示动态绑定信息
+    </span>
+</div>
+
+<div id="ifId">
+    <p v-if="seen">现在你看到我了</p>
+</div>
+
+<div id="forId">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<div id="onId">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+
+<div id="modelId">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+
+<div id="propId">
+    <ol>
+        <!--
+         现在我们为每个 todo-item 提供 todo对象
+         todo对象是变量, 即其内容可以是动态的.
+         我们也需要为每个组件提供一个"key", 稍后再作详细解释
+         -->
+        <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+<script>
+    var appBind = new Vue({
+        el: '#bindId',
+        data: {
+            message: '页面加载于: ' + new Date().toLocaleString()
+        }
+    })
+
+    var appIf = new Vue({
+        el: '#ifId',
+        data: {
+            seen: true
+        }
+    })
+
+    var appFor = new Vue({
+        el: '#forId',
+        data: {
+            todos: [
+                { text: 'learn JS'},
+                { text: 'learn Vue'}
+            ]
+        }
+    })
+
+    var appOn = new Vue({
+        el: '#onId',
+        data: {
+            message: 'hello Vue.js'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+
+    var appModel = new Vue({
+        el: '#modelId',
+        data: {
+            message: 'hello Vue'
+        }
+    })
+
+    // 定义名为 todo-item 的新组件
+    Vue.component('todo-item', {
+        // todo-item 组件现在接受一个 "prop", 类似于一个自定义特性
+        // 这个 prop名为 todo
+        // v-bind:todo="item"
+        props: ['todo'],
+        template: '<li>123{{ todo.text }}</li>'
+    })
+    var appProp = new Vue({
+        el: '#propId',
+        data: {
+            groceryList: [
+                { id: 0, text: "蔬菜"},
+                { id: 1, text: "猪肉"},
+                { id: 2, text: "牛肉"},
+
+            ]
+        }
+    })
+</script>
+
+</body>
+</html>
