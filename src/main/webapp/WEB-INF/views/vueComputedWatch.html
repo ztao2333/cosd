@@ -1,0 +1,121 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello VUE!</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.bootcss.com/axios/0.17.1/axios.js"></script>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.js"></script>
+</head>
+
+<body>
+<div id="onceId">
+<span v-once>message: {{ msg }}</span>
+</div>
+
+<div id="claId">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+
+</div>
+// watch 选项 侦听器
+<div id="watch-example">
+    <p>
+        Ask a yes/no question:
+        <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+</div>
+
+<script>
+    var appOnce = new Vue({
+        el: '#onceId',
+        data: {
+            msg: 'hello'
+        }
+    })
+
+    var vm = new Vue({
+        el: '#claId',
+        data: {
+            message: 'Hello',
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+                // this 指向 vm 实例
+                return this.message.split('').reverse().join('')
+            },
+            now1: function () {
+                return Date.now()
+            },
+
+            fullName: {
+                get: function () {
+                    return '1'
+                },
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+
+        }
+
+    })
+    console.log(vm.reversedMessage);
+    vm.message = 'Good';
+    console.log(vm.reversedMessage);
+    console.log(vm.now1);
+    console.log(Date.now());
+    console.log(vm.firstName);
+    console.log(vm.lastName);
+
+    var watchExampleVM = new Vue({
+        el: '#watch-example',
+        data: {
+            question: '',
+            answer: 'I cannot give you an answer until you ask a question!'
+        },
+        watch: {
+            //如果 question 发生改变, 这个函数就会运行
+            question: function (newQuestion) {
+                this.answer = 'Waiting for you to stop typing...'
+                this.getAnswer()
+            }
+        },
+        methods: {
+            // _.debounce 是一个通过 Lodash 限制操作频率的函数.
+            // 在这个例子中, 我们希望限制访问 yesno.wtf/api 的频率
+            // AJAX 请求直到用户输入完毕才会发出
+            getAnswer: _.debounce(
+                function () {
+                    if (this.question.indexOf('?') === -1) {
+                        this.answer = 'Questions usually contain a question mark. ;-)'
+                        return
+                    }
+                    this.answer = 'Thinking'
+                    var vm = this
+                    axios.get('https://yesno.wtf/api')
+                        .then(function (response) {
+                            vm.answer = _.capitalize(response.data.answer)
+                        })
+                        .catch(function ( error ) {
+                            vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+                },
+                // 这是我们为判定用户停止输入等待的毫秒数
+                500
+            )
+        }
+    })
+//在这个示例中，使用 watch 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，
+//    并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
+//    除了 watch 选项之外，您还可以使用命令式的 vm.$watch API。
+</script>
+
+</body>
+</html>

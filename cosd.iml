@@ -37,5 +37,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.0.0.RELEASE" level="project" />
+    <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="lodash" level="application" />
   </component>
 </module>
