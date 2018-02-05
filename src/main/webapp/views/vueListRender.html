@@ -1,0 +1,70 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello VUE!</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<ul id="listId">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+<!--在 v-for 块中，我们拥有对父作用域属性的完全访问权限。v-for 还支持一个可选的第二个参数为当前项的索引。-->
+<ul id="listIndexId">
+    <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+</ul>
+<!--你也可以用 v-for 通过一个对象的属性来迭代。-->
+<ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+        {{ value }}
+    </li>
+    <!--你也可以提供第二个的参数为键名：-->
+    <div v-for="(value, key) in object">
+        {{ key }}: {{ value }}
+    </div>
+    <!--第三个参数为索引：-->
+    <div v-for="(value, key, index) in object">
+        {{ index }}. {{ key }}: {{ value }}
+    </div>
+</ul>
+
+<script>
+    var listAppVM = new Vue ({
+        el: '#listId',
+        data: {
+            items: [
+                { message: 'Foo'},
+                { message: 'Bar'}
+            ]
+        }
+    })
+    var listIndexAppVM = new Vue ({
+        el: '#listIndexId',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                { message: 'Foo'},
+                { message: 'Bar'}
+            ]
+        }
+    })
+
+    new Vue({
+        el: '#v-for-object',
+        data: {
+            object:{
+                firstName: 'Tao',
+                lastName: 'Zhang',
+                age: 18
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

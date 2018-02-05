@@ -9,11 +9,11 @@
 
     <context:component-scan base-package="net.cosd.ctrl" />
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="prefix" value="/WEB-INF/pages/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!-- 对静态资源文件的访问 -->
-    <mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
-    <mvc:annotation-driven />
+    <!--对静态资源文件的访问  xml配置静态文件, 静态文件可以在WEB-INF中-->
+    <!--<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />-->
+    <!--<mvc:annotation-driven />-->
 </beans>

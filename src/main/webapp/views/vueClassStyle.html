@@ -1,0 +1,77 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello VUE!</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .active {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+        .text-danger {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="classId">
+    <div class="static"
+         v-bind:class="{ active: isActive, 'text-danger': hasError }">
+    </div>
+</div>
+
+<!-- 绑定的数据对象不必内联定义在模板里 -->
+<div id="externalClassId">
+    <div class="static"
+         v-bind:class="classObject">
+    </div>
+</div>
+
+<!-- computed属性 -->
+<div id="computedClassId">
+    <div class="static"
+         v-bind:class="classObject">
+    </div>
+</div>
+
+
+<script>
+    var classVM = new Vue({
+        el: '#classId',
+        data: {
+            isActive: true,
+            hasError: false
+        }
+    })
+    var externalClassVM = new Vue({
+        el: '#externalClassId',
+        data: {
+            classObject: {
+                active: true,
+                'text-danger': false
+            }
+        }
+    })
+    var computedClassVM = new Vue({
+        el: '#computedClassId',
+        data: {
+            isActive: true,
+            error: false
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error
+                }
+            }
+        }
+    })
+    console.log(computedClassVM.error.type)
+</script>
+
+</body>
+</html>

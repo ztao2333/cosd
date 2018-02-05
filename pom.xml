@@ -26,19 +26,19 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
@@ -52,7 +52,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -67,7 +67,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
       <scope>test</scope>
     </dependency>
 
@@ -75,14 +75,41 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.0.0.RELEASE</version>
+      <version>4.3.14.RELEASE</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.9.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.9.4</version>
+    </dependency>
+
 
   </dependencies>
 
