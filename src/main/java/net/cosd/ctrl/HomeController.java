@@ -12,15 +12,22 @@ import java.util.HashMap;
 @RequestMapping("/")
 public class HomeController {
     @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public Object home() {
+//    @ResponseBody
+//    public Object home() {
+//        HashMap<String,String> map=new HashMap<>();
+//        map.put("name", "Aike");
+//        map.put("sex", "男");
+//        map.put("age", "25");
+//        System.out.println("+++++++++++++++++++++home+++++++++++++++");
+//        System.out.println(map.toString() + "+++++++++++++++++++++home+++++++++++++++");
+//        return map;
+    public String home() {
         HashMap<String,String> map=new HashMap<>();
         map.put("name", "Aike");
         map.put("sex", "男");
         map.put("age", "25");
         System.out.println("+++++++++++++++++++++home+++++++++++++++");
         System.out.println(map.toString() + "+++++++++++++++++++++home+++++++++++++++");
-        return map;
-//        return "success";
+        return "success";
     }
 }
