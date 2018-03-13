@@ -23,4 +23,5 @@ public class SpittleRespositoryImpl implements SpittleRepository {
         Spittle spittle = new Spittle("Spittle " + spittleId, new Date());
         return spittle;
     }
+
 }

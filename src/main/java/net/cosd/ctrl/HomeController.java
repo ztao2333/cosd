@@ -1,5 +1,7 @@
 package net.cosd.ctrl;
 
+import net.cosd.entity.TUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +13,10 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+    public HomeController() {
+    }
+
+    // 注入SpittleRepository
     @RequestMapping(method = RequestMethod.GET)
 //    @ResponseBody
 //    public Object home() {
@@ -30,4 +36,6 @@ public class HomeController {
         System.out.println(map.toString() + "+++++++++++++++++++++home+++++++++++++++");
         return "success";
     }
+
+
 }
