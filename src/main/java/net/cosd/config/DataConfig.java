@@ -23,7 +23,7 @@ public class DataConfig {
         //dataSource.setDriverClassName("com.mysql.jdbc.Driver.class");
         dataSource.setUrl("jdbc:mysql://118.89.163.181:3306/cosd?useUnicode=true&characterEncoding=utf8");
         dataSource.setUsername("root");
-        dataSource.setPassword("mysql666");
+        dataSource.setPassword("");
         dataSource.setMaxActive(10);
         dataSource.setInitialSize(2);
         dataSource.setMinIdle(2);
