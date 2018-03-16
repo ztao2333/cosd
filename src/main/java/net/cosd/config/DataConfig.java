@@ -46,7 +46,7 @@ public class DataConfig {
     @Bean
     public org.apache.ibatis.session.Configuration mybatisConfig(){
         org.apache.ibatis.session.Configuration config = new org.apache.ibatis.session.Configuration();
-
+        // 开启驼峰命名转换:Table{create_time} -> Entity{createTime}
         config.setMapUnderscoreToCamelCase(true);
         config.setAutoMappingBehavior(AutoMappingBehavior.PARTIAL);
         config.setJdbcTypeForNull(JdbcType.NULL);
