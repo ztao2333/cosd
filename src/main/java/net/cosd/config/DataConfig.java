@@ -39,6 +39,7 @@ public class DataConfig {
     // 配置事务管理器
     @Bean
     public DataSourceTransactionManager transactionManager() {
+        // 注入数据库连接池
         return new DataSourceTransactionManager(dataSource());
     }
 
