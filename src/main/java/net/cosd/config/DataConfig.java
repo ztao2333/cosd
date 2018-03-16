@@ -36,7 +36,7 @@ public class DataConfig {
         dataSource.setTestOnReturn(false);
         return dataSource;
     }
-
+    // 配置事务管理器
     @Bean
     public DataSourceTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
