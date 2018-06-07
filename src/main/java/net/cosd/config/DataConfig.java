@@ -32,7 +32,7 @@ public class DataConfig {
         dataSource.setUrl("jdbc:mysql://localhost:3306/cosd?useUnicode=true&characterEncoding=utf8&useSSL=false" +
                 "&serverTimezone=GMT%2B8");
         dataSource.setUsername("root");
-        dataSource.setPassword("mysql666");
+        dataSource.setPassword("");
         dataSource.setMaxActive(10);
         dataSource.setInitialSize(2);
         dataSource.setMinIdle(2);
@@ -45,16 +45,17 @@ public class DataConfig {
         dataSource.setTestOnReturn(false);
         return dataSource;
     }
-
+    // 配置事务管理器
     @Bean
     public DataSourceTransactionManager transactionManager() {
+        // 注入数据库连接池
         return new DataSourceTransactionManager(dataSource());
     }
 
     @Bean
     public org.apache.ibatis.session.Configuration mybatisConfig(){
         org.apache.ibatis.session.Configuration config = new org.apache.ibatis.session.Configuration();
-
+        // 开启驼峰命名转换:Table{create_time} -> Entity{createTime}
         config.setMapUnderscoreToCamelCase(true);
         config.setAutoMappingBehavior(AutoMappingBehavior.PARTIAL);
         config.setJdbcTypeForNull(JdbcType.NULL);
