@@ -22,5 +22,12 @@
         where user_id = #{userId,jdbcType=INTEGER}
     </select>
 
+    <select id="findName" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        user_name
+        from T_USER
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
 
 </mapper>

@@ -20,8 +20,17 @@ public class DataConfig {
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
 
-        //dataSource.setDriverClassName("com.mysql.jdbc.Driver.class");
-        dataSource.setUrl("jdbc:mysql://118.89.163.181:3306/cosd?useUnicode=true&characterEncoding=utf8");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        // 解决中文乱码输入问题 useUnicode=true&characterEncoding=utf8
+        // 解决useSSL问题 useSSL=false
+        /* 解决The server time zone value '???ú±ê×??±??' is unrecognized or represents 问题 :
+            1. serverTimezone=UTC: mybatis进行MySQL操作的时候，发现输入当前数据，数据库中存储的数据总比输入的要小8个小时
+                大多数资料都是设置的UTC时间，所以才出现了8个小时的时差.
+            2. serverTimezone=GMT%2B8: 对于中国来说只需要将serverTimezone的值改为GMT%2B8就好了
+
+         */
+        dataSource.setUrl("jdbc:mysql://localhost:3306/cosd?useUnicode=true&characterEncoding=utf8&useSSL=false" +
+                "&serverTimezone=GMT%2B8");
         dataSource.setUsername("root");
         dataSource.setPassword("mysql666");
         dataSource.setMaxActive(10);

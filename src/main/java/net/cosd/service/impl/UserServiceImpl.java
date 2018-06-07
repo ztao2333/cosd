@@ -17,7 +17,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TUser findUserById(Integer id) {
-        TUser tuser = tUserMapper.findById(id);
-        return tuser;
+        return null;
+    }
+
+    @Override
+    public String findUserName(Integer userId) {
+        String userName = tUserMapper.findName(userId);
+        return userName;
+
     }
 }
